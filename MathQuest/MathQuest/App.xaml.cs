@@ -10,7 +10,7 @@ namespace MathQuest
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new StartUpScreen();
         }
 
         protected override void OnStart()
