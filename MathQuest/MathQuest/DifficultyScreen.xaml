@@ -1,12 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MathQuest.DifficultyScreen">
+             x:Class="MathQuest.DifficultyScreen"
+             BackgroundColor="Aqua">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+
+            <Button Text="Easy" BackgroundColor="Green" HorizontalOptions="Center" VerticalOptions="Center" x:Name="EasyButton" Clicked="EasyButton_Clicked">
+                
+            </Button>
+            <Button Text="Intermediate" BackgroundColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center" x:Name="IntermediateButton" Clicked="IntermediateButton_Clicked">
+                
+            </Button>
+            <Button Text="Difficult" BackgroundColor="Red" HorizontalOptions="Center" VerticalOptions="Center" x:Name="DifficultButton" Clicked="DifficultButton_Clicked">
+                
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

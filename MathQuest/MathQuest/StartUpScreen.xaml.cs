@@ -16,5 +16,9 @@ namespace MathQuest
         {
             InitializeComponent();
         }
+        void OnClicked(object sender, EventArgs e)
+        {
+           Navigation.PushAsync(new DifficultyScreen());
+        }
     }
 }

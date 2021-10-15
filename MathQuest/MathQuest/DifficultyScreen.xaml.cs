@@ -12,9 +12,31 @@ namespace MathQuest
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DifficultyScreen : ContentPage
     {
+        string Difficulty = "";
         public DifficultyScreen()
         {
             InitializeComponent();
+        }
+
+        private void DifficultButton_Clicked(object sender, EventArgs e)
+        {
+            Difficulty = "Difficult";
+            Application.Current.Properties["Difficulty"] = Difficulty;
+            Navigation.PushAsync(new Game());
+        }
+
+        private void IntermediateButton_Clicked(object sender, EventArgs e)
+        {
+            Difficulty = "Intermediate";
+            Application.Current.Properties["Difficulty"] = Difficulty;
+            Navigation.PushAsync(new Game());
+        }
+
+        private void EasyButton_Clicked(object sender, EventArgs e)
+        {
+            Difficulty = "Easy";
+            Application.Current.Properties["Difficulty"] = Difficulty;
+            Navigation.PushAsync(new Game());
         }
     }
 }

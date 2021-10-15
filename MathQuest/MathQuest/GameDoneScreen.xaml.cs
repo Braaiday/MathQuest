@@ -15,6 +15,17 @@ namespace MathQuest
         public GameDoneScreen()
         {
             InitializeComponent();
+            ScoreLabel.Text = Application.Current.Properties["Score"].ToString() + "/10";
+        }
+
+        private void RetryButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Game());
+        }
+
+        private void DifficultyButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new DifficultyScreen());
         }
     }
 }
