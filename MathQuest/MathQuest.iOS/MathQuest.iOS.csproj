@@ -133,4 +133,10 @@
       <Name>MathQuest</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\demo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\demo2.jpg" />
+  </ItemGroup>
 </Project>

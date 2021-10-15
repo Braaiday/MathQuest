@@ -16,12 +16,15 @@ namespace MathQuest
         int Random2 = 0;
         int Score = 0;
         int QuestionCounter = 0;
+        Boolean Timercontrol = false;
         public Game()
         {
 
             InitializeComponent();
             generateQuestion();
-
+            question.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
+            Error.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
+            message.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
         }
         void GenerateRandomNums()
         {
@@ -59,21 +62,40 @@ namespace MathQuest
         {
             int CorrectAnswer = CalculateAnswer(Random1, Random2);
             string answer = playeranswer.Text;
+            if (answer == null)
+            {
+                Error.IsVisible = true;
+                Error.Text = "Please fill in a answer!";
+                Error.FadeTo(1, 1500);
+            }
+            else
             if (CorrectAnswer == int.Parse(answer))
             {
+                message.IsVisible = true;
+                message.Opacity = 0;
+                message.FadeTo(1, 1500);
                 message.Text = "Correct!";
                 QuestionCounter++;
                 Score++;
                 playeranswer.IsEnabled = false;
+                SubmitButton.IsEnabled = false;
+                NextButton.IsEnabled = true;
+                AnimateNextQuetionBtton();
+
             }
             else
             {
-                message.Text = "Incorrect!&#10; The answer is " + CorrectAnswer;
+                message.IsVisible = true;
+                message.Opacity = 0;
+                message.FadeTo(1, 1500);
+                message.Text = "Incorrect!" + System.Environment.NewLine + "The answer is " + CorrectAnswer;
                 QuestionCounter++;
                 playeranswer.IsEnabled = false;
+                SubmitButton.IsEnabled = false;
+                NextButton.IsEnabled = true;
+                AnimateNextQuetionBtton();
             }
-            SubmitButton.IsEnabled = false;
-            NextButton.IsEnabled = true;
+            
         }
 
         private void NextButton_Clicked(object sender, EventArgs e)
@@ -86,17 +108,52 @@ namespace MathQuest
             }
             else
             {
+                Timercontrol = false;
                 generateQuestion();
             }
             
         }
         void generateQuestion()
         {
+            question.Opacity = 0;
+            question.FadeTo(1, 1500);
             GenerateRandomNums();
             playeranswer.IsEnabled = true;
             SubmitButton.IsEnabled = true;
-            question.Text = Random1 + " x " + Random2;
+            Error.IsVisible = false;
+            message.IsVisible = false;
+            question.Text = Random1 + " x " + Random2 + " = " + "?";
             NextButton.IsEnabled = false;
+        }
+        void AnimateNextQuetionBtton()
+        {
+            Timercontrol = true;
+            var colors = new[]
+            {
+                new { value = Color.White, name = "white"},
+                new { value = Color.Silver, name = "silver"},
+                new { value = Color.Gray, name = "Gray"},
+                new { value = Color.Black, name = "Black"},
+                new { value = Color.Purple, name = "Purple" },
+                new { value = Color.Green, name = "Green" },
+                new { value = Color.Yellow, name = "Yellow" },
+                new { value = Color.Red, name = "Red" },
+                new { value = Color.Pink, name = "Pink" }
+            };
+            foreach (var color in colors)
+            {
+                Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+                {
+                    if (Timercontrol == true)
+                    {
+                        NextButton.BackgroundColor = color.value;
+                        return true;
+                    }
+
+                    else return false;
+                });
+            }
+            
         }
     }
 }

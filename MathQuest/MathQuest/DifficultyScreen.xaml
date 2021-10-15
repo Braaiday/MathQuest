@@ -2,17 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathQuest.DifficultyScreen"
-             BackgroundColor="Aqua">
+             BackgroundImageSource="demo2.jpg">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,40,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
-
-            <Button Text="Easy" BackgroundColor="Green" HorizontalOptions="Center" VerticalOptions="Center" x:Name="EasyButton" Clicked="EasyButton_Clicked">
+            <Label x:Name="greeting" HorizontalOptions="Center" VerticalOptions="Center" Text="Pick your desired difficulty!" FontSize="28" FontAttributes="Bold" Margin="30" TextColor="Black" BackgroundColor="#000000"/>
+            <Button Text="Easy" BackgroundColor="Green" HorizontalOptions="Center" VerticalOptions="Center" x:Name="EasyButton" Clicked="EasyButton_Clicked" Margin="40" WidthRequest="300">
                 
             </Button>
-            <Button Text="Intermediate" BackgroundColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center" x:Name="IntermediateButton" Clicked="IntermediateButton_Clicked">
+            <Button Text="Intermediate" BackgroundColor="Yellow" HorizontalOptions="Center" VerticalOptions="Center" x:Name="IntermediateButton" Clicked="IntermediateButton_Clicked" Margin="40" WidthRequest="300">
                 
             </Button>
-            <Button Text="Difficult" BackgroundColor="Red" HorizontalOptions="Center" VerticalOptions="Center" x:Name="DifficultButton" Clicked="DifficultButton_Clicked">
+            <Button Text="Difficult" BackgroundColor="Red" HorizontalOptions="Center" VerticalOptions="Center" x:Name="DifficultButton" Clicked="DifficultButton_Clicked" Margin="40" WidthRequest="300">
                 
             </Button>
         </StackLayout>

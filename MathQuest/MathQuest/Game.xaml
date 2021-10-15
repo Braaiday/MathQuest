@@ -1,25 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MathQuest.Game">
+             x:Class="MathQuest.Game"
+             BackgroundImageSource="demo2.jpg">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,40,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="layout">
             <Label 
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
-                x:Name="question"/>
-            <Entry Placeholder="Answer" x:Name="playeranswer">
+                x:Name="question" FontSize="50"  TextColor="Red" Padding="30"/>
+            <Entry Placeholder="Answer" x:Name="playeranswer" Keyboard="Numeric">
                 
             </Entry>
-            <Button Text="Submit" x:Name="SubmitButton" Clicked="SubmitButton_Clicked">
+            <Button Text="Submit" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" BackgroundColor="Green" FontAttributes="Bold" Margin="40" WidthRequest="300" FontSize="Large">
                 
             </Button>
-            <Label x:Name="message">
+            <Label x:Name="message" TextColor="Red" FontSize="Large" FontAttributes="Bold" Padding="20" WidthRequest="300" IsVisible="false" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 
             </Label>
-            <Button Text="Next Question!" x:Name="NextButton" Clicked="NextButton_Clicked" IsEnabled="False">
+            <Button Text="Next Question!" x:Name="NextButton" Clicked="NextButton_Clicked" IsEnabled="False" BackgroundColor="Yellow" FontAttributes="Bold" FontSize="Large">
                 
             </Button>
+           
+             <Label x:Name="Error" IsVisible="false" TextColor="Red" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
