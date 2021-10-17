@@ -15,6 +15,10 @@ namespace MathQuest
         public StartUpScreen()
         {
             InitializeComponent();
+            MyButton.BackgroundColor = Color.FromRgba(255, 247, 5, 0.8);
+            WelcomeFrame.BackgroundColor = Color.FromRgba(255, 247, 5, 0);
+            PlayFrame.BackgroundColor = Color.FromRgba(255, 247, 5, 0);
+            GreetingsLabel.BackgroundColor = Color.FromRgba(0, 0, 0, 0.8);
         }
         void OnClicked(object sender, EventArgs e)
         {

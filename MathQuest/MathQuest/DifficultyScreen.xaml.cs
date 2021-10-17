@@ -16,7 +16,7 @@ namespace MathQuest
         public DifficultyScreen()
         {
             InitializeComponent();
-            greeting.BackgroundColor = Color.FromRgba(17, 44, 184, 1);
+            greeting.BackgroundColor = Color.FromRgba(0, 0, 0, 0.8);
         }
 
         private void DifficultButton_Clicked(object sender, EventArgs e)

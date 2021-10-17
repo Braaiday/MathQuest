@@ -10,11 +10,24 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="layout">
+            <Label x:Name="QuestionCount" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" >
+                
+            </Label>
             <Label 
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
-                x:Name="question" FontSize="50"  TextColor="Red" Padding="30"/>
-            <Entry Placeholder="Answer" x:Name="playeranswer" Keyboard="Numeric">
+                x:Name="question" FontSize="50"  TextColor="Yellow" Padding="30">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span x:Name="Num1" TextColor="Aqua"/>
+                        <Span x:Name="MultiplySign" TextColor="White"/>
+                        <Span x:Name="Num2" TextColor="LightGreen"/>
+                        <Span x:Name="EqualSign" TextColor="Yellow"/>
+                        <Span x:Name="QuestionMark" TextColor="Red"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Entry Placeholder="Answer" x:Name="playeranswer" Keyboard="Numeric" FontAttributes="Bold" FontSize="Large" TextColor="White">
                 
             </Entry>
             <Button Text="Submit" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" BackgroundColor="Green" FontAttributes="Bold" Margin="40" WidthRequest="300" FontSize="Large">

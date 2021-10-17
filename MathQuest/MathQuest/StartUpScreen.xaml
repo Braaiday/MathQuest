@@ -5,16 +5,36 @@
              BackgroundImageSource="demo2.jpg">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS, Android" Value="0,40,0,0" />
+            <On Platform="iOS" Value="0, 20, 0, 0" />
+            <On Platform="Android" Value="0, 0, 0, 0" />
+            <On Platform="UWP" Value="0, 0, 0, 0" />
         </OnPlatform>
     </ContentPage.Padding>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center"  VerticalOptions="Start">
-            <Label Text="Welcome to Math Quest"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="StartAndExpand" Padding="20" FontSize="Large" TextColor="Black" BackgroundColor="Yellow"/>
-            <Button x:Name="MyButton" Clicked="OnClicked" Text="GO TO GAME" HeightRequest="100">
-            </Button>
+        <StackLayout>
+            <StackLayout.Children>
+                <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="WelcomeFrame">
+                    <Frame.Content>
+                        <Label
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" FontSize="28" TextColor="White" BackgroundColor="Black"  Padding="30" x:Name="GreetingsLabel">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Welcome to Math Quest"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Frame.Content>
+                </Frame>
+                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="PlayFrame">
+                    <Frame.Content>
+                        <Button x:Name="MyButton" Clicked="OnClicked" Text="Play" FontSize="50" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="250">
+
+                        </Button>
+                    </Frame.Content>
+                </Frame>
+                
+            </StackLayout.Children>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

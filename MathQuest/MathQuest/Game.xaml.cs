@@ -16,6 +16,7 @@ namespace MathQuest
         int Random2 = 0;
         int Score = 0;
         int QuestionCounter = 0;
+        int QuestionCountDisplay = 1;
         Boolean Timercontrol = false;
         public Game()
         {
@@ -29,7 +30,7 @@ namespace MathQuest
         void GenerateRandomNums()
         {
 
-            if ( Application.Current.Properties["Difficulty"].ToString() == "Easy")
+            if (Application.Current.Properties["Difficulty"].ToString() == "Easy")
             {
                 Random random = new Random();
                 Random1 = random.Next(6);
@@ -62,11 +63,12 @@ namespace MathQuest
         {
             int CorrectAnswer = CalculateAnswer(Random1, Random2);
             string answer = playeranswer.Text;
-            if (answer == null)
+            if ((answer == null) || (answer == ""))
             {
                 Error.IsVisible = true;
                 Error.Text = "Please fill in a answer!";
                 Error.FadeTo(1, 1500);
+                DisplayAlert("Plase fill in answer", "", "OK");
             }
             else
             if (CorrectAnswer == int.Parse(answer))
@@ -109,6 +111,7 @@ namespace MathQuest
             else
             {
                 Timercontrol = false;
+                QuestionCountDisplay++;
                 generateQuestion();
             }
             
@@ -122,8 +125,14 @@ namespace MathQuest
             SubmitButton.IsEnabled = true;
             Error.IsVisible = false;
             message.IsVisible = false;
-            question.Text = Random1 + " x " + Random2 + " = " + "?";
+            //question.Text = Random1 + " x " + Random2 + " = " + "?";
+            Num1.Text = Random1.ToString() + " ";
+            MultiplySign.Text = " X ";
+            Num2.Text = Random2.ToString() + " ";
+            EqualSign.Text = "= ";
+            QuestionMark.Text = "?";
             NextButton.IsEnabled = false;
+            QuestionCount.Text = "Question " + QuestionCountDisplay + " of 10!";
         }
         void AnimateNextQuetionBtton()
         {
