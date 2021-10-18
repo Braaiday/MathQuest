@@ -24,7 +24,6 @@ namespace MathQuest
             InitializeComponent();
             generateQuestion();
             question.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
-            Error.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
             message.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
         }
         void GenerateRandomNums()
@@ -65,9 +64,7 @@ namespace MathQuest
             string answer = playeranswer.Text;
             if ((answer == null) || (answer == ""))
             {
-                Error.IsVisible = true;
-                Error.Text = "Please fill in a answer!";
-                Error.FadeTo(1, 1500);
+              
                 DisplayAlert("Plase fill in answer", "", "OK");
             }
             else
@@ -82,6 +79,8 @@ namespace MathQuest
                 playeranswer.IsEnabled = false;
                 SubmitButton.IsEnabled = false;
                 NextButton.IsEnabled = true;
+                NextButton.IsVisible = true;
+                SubmitButton.IsVisible = false;
                 AnimateNextQuetionBtton();
 
             }
@@ -95,6 +94,8 @@ namespace MathQuest
                 playeranswer.IsEnabled = false;
                 SubmitButton.IsEnabled = false;
                 NextButton.IsEnabled = true;
+                NextButton.IsVisible = true;
+                SubmitButton.IsVisible = false;
                 AnimateNextQuetionBtton();
             }
             
@@ -112,6 +113,8 @@ namespace MathQuest
             {
                 Timercontrol = false;
                 QuestionCountDisplay++;
+                SubmitButton.IsVisible = true;
+                NextButton.IsVisible = false;
                 generateQuestion();
             }
             
@@ -123,7 +126,7 @@ namespace MathQuest
             GenerateRandomNums();
             playeranswer.IsEnabled = true;
             SubmitButton.IsEnabled = true;
-            Error.IsVisible = false;
+           
             message.IsVisible = false;
             //question.Text = Random1 + " x " + Random2 + " = " + "?";
             Num1.Text = Random1.ToString() + " ";

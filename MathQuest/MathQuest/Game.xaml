@@ -27,20 +27,21 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Entry Placeholder="Answer" x:Name="playeranswer" Keyboard="Numeric" FontAttributes="Bold" FontSize="Large" TextColor="White">
+            <Entry Placeholder="Answer" x:Name="playeranswer" Keyboard="Numeric" FontAttributes="Bold" FontSize="Large" TextColor="Black" >
                 
             </Entry>
-            <Button Text="Submit" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" BackgroundColor="Green" FontAttributes="Bold" Margin="40" WidthRequest="300" FontSize="Large">
+            <Button Text="Submit" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" BackgroundColor="Green" FontAttributes="Bold" Margin="40" WidthRequest="300" FontSize="Large" IsVisible="true">
                 
+            </Button>
+            <Button Text="Next Question!" x:Name="NextButton" Clicked="NextButton_Clicked" IsEnabled="False" BackgroundColor="Yellow" FontAttributes="Bold" FontSize="Large" IsVisible="false">
+
             </Button>
             <Label x:Name="message" TextColor="Red" FontSize="Large" FontAttributes="Bold" Padding="20" WidthRequest="300" IsVisible="false" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 
             </Label>
-            <Button Text="Next Question!" x:Name="NextButton" Clicked="NextButton_Clicked" IsEnabled="False" BackgroundColor="Yellow" FontAttributes="Bold" FontSize="Large">
-                
-            </Button>
+            
            
-             <Label x:Name="Error" IsVisible="false" TextColor="Red" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+             
 
         </StackLayout>
     </ContentPage.Content>
