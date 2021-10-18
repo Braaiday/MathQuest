@@ -10,39 +10,43 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="layout">
-            <Label x:Name="QuestionCount" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" >
-                
-            </Label>
-            <Label 
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                x:Name="question" FontSize="50"  TextColor="Yellow" Padding="30">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span x:Name="Num1" TextColor="Aqua"/>
-                        <Span x:Name="MultiplySign" TextColor="White"/>
-                        <Span x:Name="Num2" TextColor="LightGreen"/>
-                        <Span x:Name="EqualSign" TextColor="Yellow"/>
-                        <Span x:Name="QuestionMark" TextColor="Red"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <Entry Placeholder="Answer" x:Name="playeranswer" Keyboard="Numeric" FontAttributes="Bold" FontSize="Large" TextColor="Black" >
-                
-            </Entry>
-            <Button Text="Submit" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" BackgroundColor="Green" FontAttributes="Bold" Margin="40" WidthRequest="300" FontSize="Large" IsVisible="true">
-                
-            </Button>
-            <Button Text="Next Question!" x:Name="NextButton" Clicked="NextButton_Clicked" IsEnabled="False" BackgroundColor="Yellow" FontAttributes="Bold" FontSize="Large" IsVisible="false">
+            <StackLayout.Children>
+                <Frame  x:Name="question">
+                    <Frame.Content>
+                        <StackLayout>
+                            <StackLayout.Children>
+                                <Label x:Name="QuestionCount" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" >
 
-            </Button>
-            <Label x:Name="message" TextColor="Red" FontSize="Large" FontAttributes="Bold" Padding="20" WidthRequest="300" IsVisible="false" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
-                
-            </Label>
+                                </Label>
+                                <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="50"  TextColor="Yellow">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span x:Name="Num1" TextColor="Aqua"/>
+                                            <Span x:Name="MultiplySign" TextColor="White"/>
+                                            <Span x:Name="Num2" TextColor="LightGreen"/>
+                                            <Span x:Name="EqualSign" TextColor="Yellow"/>
+                                            <Span x:Name="QuestionMark" TextColor="Red"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout.Children>
+                        </StackLayout>
+                    </Frame.Content>
+                </Frame>
+                <Entry Placeholder="Answer" x:Name="playeranswer" Keyboard="Numeric" FontAttributes="Bold" FontSize="Large" TextColor="Black" >
+
+                </Entry>
+                <Button Text="Submit" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" BackgroundColor="Green" FontAttributes="Bold"  WidthRequest="300" FontSize="Large" IsVisible="true">
+
+                </Button>
+                <Button Text="Next Question!" x:Name="NextButton" Clicked="NextButton_Clicked" IsEnabled="False" BackgroundColor="Yellow" FontAttributes="Bold" FontSize="Large" IsVisible="false">
+
+                </Button>
+                <Label x:Name="message" TextColor="Red" FontSize="Large" FontAttributes="Bold" WidthRequest="300" IsVisible="false" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+
+                </Label>
+            </StackLayout.Children>
             
-           
-             
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
