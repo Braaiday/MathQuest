@@ -15,14 +15,18 @@ namespace MathQuest
         int Random1 = 0;
         int Random2 = 0;
         int Score = 0;
+        int Time = 0;
         int QuestionCounter = 0;
         int QuestionCountDisplay = 1;
-        Boolean Timercontrol = false;
+        int colorPicker = 0;
         public Game()
         {
 
             InitializeComponent();
+            TimerLabel.Text = "0";
+            GameTimer();
             generateQuestion();
+            TimeArea.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
             question.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
             message.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
         }
@@ -81,8 +85,7 @@ namespace MathQuest
                 NextButton.IsEnabled = true;
                 NextButton.IsVisible = true;
                 SubmitButton.IsVisible = false;
-                AnimateNextQuetionBtton();
-
+                NextButtonTimer();
             }
             else
             {
@@ -96,7 +99,7 @@ namespace MathQuest
                 NextButton.IsEnabled = true;
                 NextButton.IsVisible = true;
                 SubmitButton.IsVisible = false;
-                AnimateNextQuetionBtton();
+                NextButtonTimer();
             }
             
         }
@@ -106,12 +109,12 @@ namespace MathQuest
             if (QuestionCounter == 10)
             {
                 Application.Current.Properties["Score"] = Score;
+                Application.Current.Properties["Time"] = Time;
                 Navigation.PushAsync(new GameDoneScreen());
                 
             }
             else
             {
-                Timercontrol = false;
                 QuestionCountDisplay++;
                 SubmitButton.IsVisible = true;
                 NextButton.IsVisible = false;
@@ -137,35 +140,54 @@ namespace MathQuest
             NextButton.IsEnabled = false;
             QuestionCount.Text = "Question " + QuestionCountDisplay + " of 10!";
         }
-        void AnimateNextQuetionBtton()
+       
+            
+        
+
+        
+        bool OnTimerTick()
         {
-            Timercontrol = true;
+            int curTime = int.Parse(TimerLabel.Text);
+            int NewTime = curTime + 1;
+            TimerLabel.Text = NewTime.ToString();
+            Time++;
+            return true;
+        }
+
+        bool OnTimerTick2()
+        {
             var colors = new[]
             {
                 new { value = Color.White, name = "white"},
                 new { value = Color.Silver, name = "silver"},
                 new { value = Color.Gray, name = "Gray"},
-                new { value = Color.Black, name = "Black"},
                 new { value = Color.Purple, name = "Purple" },
                 new { value = Color.Green, name = "Green" },
                 new { value = Color.Yellow, name = "Yellow" },
                 new { value = Color.Red, name = "Red" },
                 new { value = Color.Pink, name = "Pink" }
             };
-            foreach (var color in colors)
-            {
-                Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-                {
-                    if (Timercontrol == true)
-                    {
-                        NextButton.BackgroundColor = color.value;
-                        return true;
-                    }
-
-                    else return false;
-                });
-            }
             
+            if (colorPicker < 8)
+            {
+                NextButton.BackgroundColor = colors[colorPicker].value;
+                colorPicker++;
+            }
+            else
+            {
+                colorPicker = 0;
+                NextButton.BackgroundColor = colors[colorPicker].value;
+            }
+            return true;
+        }
+
+        public void NextButtonTimer()
+        {
+            Device.StartTimer(TimeSpan.FromSeconds(0.5), OnTimerTick2);
+        }
+        public void GameTimer()
+        {
+            Device.StartTimer(TimeSpan.FromSeconds(1), OnTimerTick);
         }
     }
 }

@@ -11,6 +11,12 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="layout">
             <StackLayout.Children>
+                <Frame x:Name="TimeArea">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" >
+                    <Label Text="Time:" TextColor="White" FontSize="30"/>
+                    <Label x:Name="TimerLabel" FontSize="30" TextColor="White"/>
+                </StackLayout>
+                </Frame>
                 <Frame  x:Name="question">
                     <Frame.Content>
                         <StackLayout>
@@ -45,6 +51,15 @@
                 <Label x:Name="message" TextColor="Red" FontSize="Large" FontAttributes="Bold" WidthRequest="300" IsVisible="false" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
 
                 </Label>
+                <BoxView x:Name="mybox">
+                    <BoxView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness"
+			        iOS="30"
+			            Android="10"
+			WinPhone="10" />
+
+                    </BoxView.Margin>
+                </BoxView>
             </StackLayout.Children>
             
         </StackLayout>

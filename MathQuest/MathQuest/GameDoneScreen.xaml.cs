@@ -15,7 +15,10 @@ namespace MathQuest
         public GameDoneScreen()
         {
             InitializeComponent();
-            ScoreLabel.Text = "Your Score is " + Application.Current.Properties["Score"].ToString() + "/10";
+            Page.BackgroundColor = Color.FromRgba(0, 0, 0, 0);
+            ScoreCard.BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
+            ScoreLabel.Text = "Your Score is " + Application.Current.Properties["Score"].ToString() + "/10.";
+            timeLabel.Text = "Your time is " + Application.Current.Properties["Time"].ToString() + " seconds.";
         }
 
         private void RetryButton_Clicked(object sender, EventArgs e)
